@@ -1,0 +1,60 @@
+body {
+    width: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primery: rgba(255, 255, 255, 0.748);
+    --secondery: rgb(255, 255, 255);
+    --main: rgb(12, 110, 238);
+    --attract: rgba(0, 0, 0, 0.282);
+    --last: #05212b;
+}
+
+#signupForm {
+    width: 350px;
+    height: 465px;
+    background-color: white;
+    box-shadow: 0px 1px 10px var(--last);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#signupForm>center>img {
+    width: 150px;
+    height: 150px;
+    
+}
+
+#signupForm>label{
+    color: var(--last);
+     font-size: 18px;
+}
+#signupForm>input{
+    margin-bottom: 10px;
+    margin-top: 3px;
+    width: 95%;
+    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid var(--last);
+    color: black;
+}
+#signupForm>button{
+  width: 100%;
+  padding: 6px;
+  background-color: var(--last);
+  border: 1px solid var(--last);
+  color: var(--secondery);
+  border-radius: 8px;
+}
+#signupForm>button:hover{
+    opacity: 0.7;
+}
