@@ -258,14 +258,17 @@ if (window.location.pathname.includes("index2.html")) {
                 });
             }
 
-            const deleteBtn = cardsimg.querySelector(".delete-btn");
-            if (deleteBtn) {
-                deleteBtn.addEventListener("click", () => {
-                    let updatedCart = cart.filter(item => item.img !== product.img);
-                    localStorage.setItem(cartKey, JSON.stringify(updatedCart));
-                    location.reload();
-                });
-            }
+         const deleteBtn = cardsimg.querySelector(".delete-btn");
+if (deleteBtn) {
+    deleteBtn.addEventListener("click", () => {
+        let updatedCart = cart.filter(item => item.img !== product.img);
+        localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+
+        // Remove card from the DOM instead of reloading
+        cardsimg.remove();
+    });
+}
+
 
             container.appendChild(cardsimg);
         });
