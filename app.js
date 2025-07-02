@@ -89,6 +89,7 @@ function getCurrentTime() {
 
 function attachCartButtons() {
     const buttons = document.querySelectorAll(".signpage");
+
     buttons.forEach((button, index) => {
         button.addEventListener("click", function () {
             let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -97,18 +98,27 @@ function attachCartButtons() {
                 return;
             }
 
-            let cartKey = `cart_${currentUser.signemail}`;
+            const cartKey = `cart_${currentUser.signemail}`;
             let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
             const product = store[index];
 
             if (!cart.some(item => item.img === product.img)) {
                 const location = getLocationSelection();
                 const time = getCurrentTime();
-                cart.push({ ...product, location, time });
+
+                const productWithMeta = {
+                    ...product,
+                    location: location,
+                    time: time
+                };
+
+                cart.push(productWithMeta);
                 localStorage.setItem(cartKey, JSON.stringify(cart));
-                alert("Added to cart with location and time!");
+
+                alert("Added to cart with time and location!");
             } else {
-                alert("Already in cart");
+                alert("Already in cart!");
             }
         });
     });
