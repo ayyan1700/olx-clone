@@ -91,7 +91,12 @@ function attachCartButtons() {
     const buttons = document.querySelectorAll(".signpage");
     buttons.forEach((button, index) => {
         button.addEventListener("click", function () {
-          
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            if (!currentUser) {
+                alert("Please login first.");
+                return;
+            }
+
             let cartKey = `cart_${currentUser.signemail}`;
             let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
             const product = store[index];
@@ -101,12 +106,14 @@ function attachCartButtons() {
                 const time = getCurrentTime();
                 cart.push({ ...product, location, time });
                 localStorage.setItem(cartKey, JSON.stringify(cart));
+                alert("Added to cart with location and time!");
             } else {
                 alert("Already in cart");
             }
         });
     });
 }
+
 
 window.addEventListener("DOMContentLoaded", attachCartButtons);
 
